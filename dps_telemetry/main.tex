@@ -1,22 +1,27 @@
 \documentclass[letterpaper,twocolumn,10pt]{article}
+
+% Load 'xcolor' with the 'table' option here, before any other packages.
+\usepackage[table]{xcolor}
+
+% Now load 'usenix-2020-09' and other packages.
 \usepackage{usenix-2020-09}
 \usepackage{tikz}
 \usepackage{amsmath}
 \usepackage{multirow,booktabs}
 \usepackage{xspace}
-
 \usepackage[utf8]{inputenc}
 \usepackage{longtable}
 \usepackage{lipsum}  % This package provides filler text.
-\usepackage[table]{xcolor}  % Allows for coloring of table
+
+% The 'float' and 'array' packages should not conflict with 'xcolor'.
 \usepackage{float}
 \usepackage{array}
 
+% Additional packages.
 \usepackage[margin=1in]{geometry} % Adjust the page margins if needed
 \usepackage{tabularx} % For tables that span the width of the page
 \usepackage{ltablex} % Allows 'tabularx' environments to break over pages
 \usepackage{booktabs} % For better-looking tables
-
 \usepackage{makecell} % Allows line breaks within table cells
 
 \newcommand{\ricky}[1]{\textit{\textcolor{teal}{#1}}}
@@ -28,21 +33,22 @@
 
 %-------------------------------------------------------------------------------
 \begin{document}
-	%-------------------------------------------------------------------------------
-	
-	%don't want date printed
-	\date{}
-	
-	% make title bold and 14 pt font (Latex default is non-bold, 16 pt)
-	\title{\Large \bf Telemetry from DDOS Protection Sevices Providers}
-	
-	%for single author (just remove % characters)
-	\author{} % end author
-	
-	\maketitle
+%-------------------------------------------------------------------------------
 
-\input{akamai-session/akamai-intro}
+%don't want date printed
+\date{}
+
+% make title bold and 14 pt font (Latex default is non-bold, 16 pt)
+\title{\Large \bf Telemetry from DDOS Protection Sevices Providers}
+
+%for single author (just remove % characters)
+\author{} % end author
+
+\maketitle
+
+
+\input{akamai-intro.tex}
 
 \bibliographystyle{plain}
-\bibliography{akamai-session/akamai_ref}
+\bibliography{akamai_ref}
 \end{document}

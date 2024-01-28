@@ -1,5 +1,5 @@
 \section{DDOS protection Services Provider (DPS)}\label{sec:DPS}
-DDoS Protection Service (DPS) providers mitigating DDoS attacks through scrubbing centres, DPS can be categorized into BGP-based and DNS-based services BGP-based DPS \cite{ tung2018understanding}. is favoured for large-scale attacks, leveraging the Border Gateway Protocol to reroute overwhelming malicious traffic from the victim's network to more resilient networks, significantly reducing the attack's impact.
+DDoS Protection Service (DPS) providers mitigating DDoS attacks through scrubbing centres, DPS can be categorized into BGP-based and DNS-based services BGP-based DPS \cite{tung2018understanding}. is favoured for large-scale attacks, leveraging the Border Gateway Protocol to reroute overwhelming malicious traffic from the victim's network to more resilient networks, significantly reducing the attack's impact.
 
 Conversely, DNS-based DPS utilizes DNS redirection, altering the DNS records of the target domain to reroute traffic to the DPS provider’s servers. This method filters traffic, removing malicious activities and ensuring only legitimate traffic reaches the target. It hinges on changing DNS resolution, directing domain requests to DPS servers instead of the target's original servers.
 
@@ -45,7 +45,7 @@ Others & SYN PUSH, WSDiscovery Flood \\
 
 In contrast, DNS-Based DPS targets application-layer attacks and emphasizes analyzing content requests \cite{xie2008monitoring}. Unlike Layer 3 or 4 attacks where DPI provides significant benefits, application-layer attack detection in DNS-based DPS can rely on sufficient telemetry from traffic graphs and netflow analysis without necessitating DPI. This is particularly relevant when the network traffic is unrelated to the application layer, such as UDP packet floods or TCP packets on unrelated ports, which are not pertinent for a targeted web server's DPI analysis. DNS-based DPS instead places a greater emphasis on application logs from targeted systems. These logs are pivotal in identifying activities that exploit application vulnerabilities or functionalities, offering direct insights into how the application is being manipulated or overwhelmed by attack traffic. While DPI offers thorough traffic analysis, its effectiveness for DNS-based DPS is limited due to the complexities and demands of DPI, and its limited utility in encrypted traffic analysis.
 
-Table \ref{tab:application_attacks} provided a list of application based attack vectors (strategy) \cite{zolotukhin2018data } which are the primary focus of DNS-Based DPS.
+Table \ref{tab:application_attacks} provided a list of application based attack vectors (strategy) \cite{zolotukhin2018data} which are the primary focus of DNS-Based DPS.
 
 \begin{table}[!htbp]
 \centering
@@ -78,10 +78,10 @@ Miscellaneous Application Attacks & WebSocket Flood, Malicious Bot Scraping, Dri
 
 
 \section{The telemetry discrepancy among DPS in the industry}\label{sec:telemetry}
-The telemetry discrepancy between BGP-Based and DNS-Based DDoS Protection Services (DPS) is primarily attributed to the difference in detection and mitigation strategies across various OSI layers and the distinct nature of their customer bases. BGP-Based DPS, focusing on network prefixes, caters predominantly to large corporations and enterprises. Within a single network prefix, BGP-Based DPS addresses a multitude of entities spanning different network, transport, and application protocols. Conversely, DNS-Based DPS typically provides services per application, often associated with a single IP address, as outlined in the operational strategies section. 
+The telemetry discrepancy between BGP-Based and DNS-Based DDoS Protection Services (DPS) is primarily attributed to the difference in detection and mitigation strategies across various OSI layers and the distinct nature of their customer bases. 
+\paragraph{Scope and Target Audience Differences} BGP-Based DPS, focusing on network prefixes, caters predominantly to large corporations and enterprises. Within a single network prefix, BGP-Based DPS addresses a multitude of entities spanning different network, transport, and application protocols. Conversely, DNS-Based DPS typically provides services per application, often associated with a single IP address, as outlined in the operational strategies section. 
 
-Additionally, customers utilizing BGP-Based DPS, such as financial institutions, government bodies, and banks, may seek volumetric protection while retaining control over their application layer. For instance, banking customers might be reluctant to share SSL certificates for their portals with the DPS, preferring to maintain exclusive control over the decryption of application content and requests.
-
+\paragraph{Balancing Volumetric Protection and Application Layer Control} Additionally, customers utilizing BGP-Based DPS, such as financial institutions, government bodies, and banks, may seek volumetric protection while retaining control over their application layer. For instance, banking customers might be reluctant to share SSL certificates for their portals with the DPS, preferring to maintain exclusive control over the decryption of application content and requests.
 \section{Industry Trends: Offering Hybrid DPS Solutions}\label{sec:solutions}
 Some DPS providers in the industry are now offering both BGP-based and DNS-based services to provide a comprehensive DDoS mitigation portfolio. This hybrid approach allows for a more versatile defense strategy, catering to a broader range of attack vectors and offering tailored solutions based on the specific needs and infrastructure of the client.
 

@@ -4,6 +4,45 @@ In Telescopes' operational design, attacks are detected by analyzing backscatter
 Due to our mitigation mechanisms, there is only a slim chance that the date recorded by Telescopes will coincide with our event dataset. If Telescopes record a date that precedes the startTime and endTime of a DDOS event, it might be indicative of an attack being detected early by the Telescopes. Following this early detection, mitigation measures might be activated within the DDOS event window to address the attack. On the other hand, if a date recorded by Telescopes falls after the DDOS event timeframe, it could imply a re-emergence of the attack, occurring after the mitigation measures detailed in the DDOS event data.
 The Honeypots dataset, however, provides a contrasting perspective. Unlike Telescopes, Honeypots are not just detection tools; they actively participate in attack mechanisms. As such, their data might align with DDOS events by coincidence. The occurrence of a Honeypot record during a DDOS event does not inherently suggest a direct link with the event's mitigation processes, as Honeypots operate independently of these countermeasures
 
+\subsection*{'customer\_ip\_space' Definition}
+
+Let $U$ represent the union of address spaces from the categories 'amppot', 'hopscotch', 'ucsd', and 'orion'. The 'customer\_ip\_space' condition identifies a subset of $U$, denoted as $S$, characterized by the following criteria:
+
+\begin{enumerate}
+    \item \textbf{Summarization to Class C Networks}: Each IP address in $S$ is summarized to a Class C network, represented by the first three octets of the IP address, effectively transforming the address into a /24 network notation.
+    \item \textbf{Match with Summarized /24 Networks}: An address $s \in S$ is considered part of 'customer\_ip\_space' if its summarized /24 network matches with any summarized /24 network within $U$.
+\end{enumerate}
+
+\subsection*{'Customer event ip' Definition}
+
+The 'Customer event ip' condition extends the identification of relevant IP addresses by incorporating temporal alignment with specific events. It represents a subset of 'customer\_ip\_space', denoted as $E$, with the following additional condition:
+
+\begin{enumerate}
+    \item \textbf{Temporal Alignment with Events}: For an address $e \in E$, not only must it satisfy the 'customer\_ip\_space' criteria, but it must also coincide with an event whose duration ($p$) matches a specified date ($d$). The event duration is defined by the start and end times of activity associated with the IP address. An event is considered to match if $d$ falls within this duration, indicating that the event occurred within the specified timeframe.
+\end{enumerate}
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.30]{graphs/matched_customer_graph.pdf}
+    \caption{Mapping customer ip space and event.}
+    \label{fig:mappedcustomergraph}
+    \end{figure}
+
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[scale=0.4]{graphs/space_no_event.pdf}
+        \caption{Customer IP Space Analysis.}
+        \label{fig:customeripspace}
+        \end{figure}
+
+\begin{figure*}[htbp]
+    \centering
+    \includegraphics[scale=0.48]{graphs/noir3.pdf}
+    \caption{Custer IP Space and event Analysis.}
+    \label{fig:Mappedaddressanalysis}
+    \end{figure*}
+
 \section{Date Alignment}\label{sec:date_events_alignment}
 The data from the telescopes, which aligns with our DDOS events, is vividly represented by the spikes in True counts shown in the graph. 
 Customer\_ip\_matched in this context identifies IP addresses of our customers that are detected and logged within the telescopes/honeypot datasets. The designation `customer,' however, is more specifically applied to those customer IPs that not only appear in the telescopes/honeypot datasets but also coincide with the broader timeframes delineated by the \texttt{startTime} and \texttt{endTime} of our DDOS events. Crucially, this correlation is not based on exact hour, minute, and second details, since the telescopes/honeypot data does not include these precise time elements. Rather, matching is determined by the day, with the assumption that each recorded date encompasses the full 24-hour span from one midnight to the next.

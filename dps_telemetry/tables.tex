@@ -1,0 +1,80 @@
+\section{appendix tables}\label{sec:tables}
+Table \ref{tab:ddos_attack_vectors} provides a list of 73 attack vectors identified by a DPS from 1 Jan 2019 – 31 Dec 2023
+
+
+\begin{table}[!htbp]
+\caption{DDoS Attack Vectors}
+\label{tab:ddos_attack_vectors}
+\centering
+\begin{tabular}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.8cm}|}
+\hline
+\textbf{Category} & \textbf{Attack Vectors} \\
+\hline
+Reflection Attack & Memcached Reflection, DNS Reflection, NTP Reflection, SSDP Reflection, CLDAP Reflection, WSDiscovery Reflection, Censorship TCP Reflection, TFTP Reflection, mDNS Reflection, Netbios Reflection, ARMS Reflection, SNMP Reflection, RPC Reflection, SQL Server Reflection, RIP Reflection, SADP Reflection, SLP Reflection, Ubnt Reflection \\
+\hline
+Network Layer Attack & GRE Protocol Flood, ICMP Flood, IGMP Flood, IP Fragment \\
+\hline
+Transport Layer Attack (UDP) & UDP Flood, UDP Fragment \\
+\hline
+Transport Layer Attack (TCP) & TCP Anomaly, ACK Flood, SYN Flood, PSH ACK Flood, RESET Flood, SYN ACK Flood, Reserved Protocol Flood, TCP Fragment, Connection Flood, PUSH Flood, FIN Flood, XMAS, FIN PUSH Flood \\
+\hline
+Application Attack (UDP) & DNS Flood, NTP FLOOD, CharGEN Attack, SSDP Flood, DHdiscovery, STUN, SNMP Flood, Netbios Flood, mDNS Flood, TFTP Flood, ESP Flood, HEAD Flood, RIP Flood, coap, quake, voip10074 \\
+\hline
+Application Attack (TCP) & HTTP Flood, Apple Remote Desktop, Sentinel Flood, valvesrcds, VxWorks, afs, steamremoteplay, nat pmp, ikev1, plex, TLS Exhaustion, fivem, GET Flood, SSL GET Flood, POST Flood, SSL POST Flood \\
+\hline
+Others & SYN PUSH, WSDiscovery Flood \\
+\hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:application_attacks} provided a list of application based attack vectors (strategy) \cite{zolotukhin2018data} which are the primary focus of DNS-Based DPS.
+
+\begin{table}[!htbp]
+\centering
+\caption{Summary of Application Layer Attack Vectors}
+\begin{tabular}{|p{0.3\linewidth}|p{0.6\linewidth}|}
+\hline
+\textbf{Category} & \textbf{Attack Vectors} \\
+\hline
+Application Layer Attack (HTTP/HTTPS) & Slowloris, HTTP Flood, HTTPS Flood, HTTP/2 Flood, POST Flood, GET Flood, SSL Renegotiation Attack, SSL Exhaustion, HTTP Parameter Pollution, HTTP Bomb \\
+\hline
+Application Layer Attack (Web Applications) & Cross-Site Scripting (XSS), SQL Injection, Cross-Site Request Forgery (CSRF), Remote File Inclusion (RFI), Local File Inclusion (LFI), XML External Entity (XXE) Attack \\
+\hline
+Application Layer Attack (API) & API Endpoint Abuse, Excessive API Rate, GraphQL Injection, REST API Manipulation \\
+\hline
+Application Layer Attack (Authentication) & Credential Stuffing, Brute Force Attack, Dictionary Attack, Password Spraying \\
+\hline
+Application Layer Attack (CMS) & WordPress XML-RPC Flood, Joomla! SQL Injection, Drupalgeddon, Magento SQL Injection \\
+\hline
+Application Layer Attack (Frameworks) & Struts RCE Exploit, Ruby on Rails Code Injection, Node.js Route Enumeration \\
+\hline
+Application Layer Attack (Email Services) & Mail Bombing, Spamming, Phishing Attack, Email Spoofing \\
+\hline
+Application Layer Attack (DDoS Bots) & Mirai Botnet, Bashlite Botnet, Tor's Hammer, HOIC, LOIC \\
+\hline
+Miscellaneous Application Attacks & WebSocket Flood, Malicious Bot Scraping, Drive-By Download, Clickjacking \\
+\hline
+\end{tabular}
+\label{tab:application_attacks}
+\end{table}
+
+Table \ref{tab:ddos_protection_services} provides a summary the commonly available DDOS solutions in the industry
+
+\begin{table*}[t] % Use 't' to position at the top of the page
+\small % Adjust the font size as necessary
+\caption{Comparison of DDoS Protection Services}
+\label{tab:ddos_protection_services}
+\begin{tabularx}{\textwidth}{|X|X|X|X|X|}
+\hline
+\thead{Service Type} & \thead{General Description} & \thead{Services Protected\\ (Focus)} & \thead{Limitations} & \thead{Benefits} \\
+\hline
+BGP-based DPS & Offers DDoS protection for network service providers, hosting, and cloud service providers. Specifically designed to protect against a wide range of DDoS attacks by filtering malicious traffic in the cloud. & Network infrastructure, hosting services, and cloud platforms. & Reliant on BGP routing, which can be complex; limited to /24 prefixes or larger. & Effective for large-scale protection; can handle massive volumes of traffic; reduces the risk of network overload. \\
+\hline
+On-premises Solutions & Provides DDoS protection through physical or virtual systems installed on the client's premises. These systems can be from any vendor and are designed to integrate with the client's existing network infrastructure. & Internal networks, specific applications, and servers within the client's control. & Can be resource-intensive; may not handle large-scale attacks well; requires ongoing maintenance. & Direct control over the protection measures; immediate response to attacks; customizable to specific network needs. \\
+\hline
+DNS-based DPS & Protects your digital estate with a product combining a web application firewall, bot mitigation, API security, and Layer 7 DDoS protection. Utilizes DNS redirection to divert attack traffic for cleansing and protection. & Web applications, APIs, and digital platforms. & Dependent on DNS functionality; might not cover non-web-based services. & Comprehensive protection for web assets; scalable; effective against sophisticated attacks. \\
+\hline
+Hybrid Solution & Integrates cloud-based, on-premises DDoS protection, and/or DNS-based DPS. Leverages the strengths of various solutions for a comprehensive approach. & Combination of network infrastructure, internal networks, web applications, and cloud services. & Complexity in integrating different solutions; can be costlier. & Versatile and comprehensive protection; scalable; balances immediate on-site response with large-scale cloud capabilities. \\
+\hline
+\end{tabularx}
+\end{table*}

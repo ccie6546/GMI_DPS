@@ -5,15 +5,29 @@ Due to our mitigation mechanisms, there is only a slim chance that the date reco
 The Honeypots dataset, however, provides a contrasting perspective. Unlike Telescopes, Honeypots are not just detection tools; they actively participate in attack mechanisms. As such, their data might align with DDOS events by coincidence. The occurrence of a Honeypot record during a DDOS event does not inherently suggest a direct link with the event's mitigation processes, as Honeypots operate independently of these countermeasures
 
 \subsection*{'customer\_ip\_space' Definition}
-
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.4]{graphs/space_no_event.pdf}
+    \caption{Customer IP Space Analysis.}
+    \label{fig:customeripspace}
+\end{figure}
+Fig. \ref{fig:customeripspace} shows the attack event detected by telescopes and honeypots for our interested ip space $S$.
+    
 Let $U$ represent the union of address spaces from the categories 'amppot', 'hopscotch', 'ucsd', and 'orion'. The 'customer\_ip\_space' condition identifies a subset of $U$, denoted as $S$, characterized by the following criteria:
-
 \begin{enumerate}
     \item \textbf{Summarization to Class C Networks}: Each IP address in $S$ is summarized to a Class C network, represented by the first three octets of the IP address, effectively transforming the address into a /24 network notation.
     \item \textbf{Match with Summarized /24 Networks}: An address $s \in S$ is considered part of 'customer\_ip\_space' if its summarized /24 network matches with any summarized /24 network within $U$.
 \end{enumerate}
 
 \subsection*{'Customer event ip' Definition}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[scale=0.4]{graphs/space_no_event.pdf}
+    \caption{Customer Event IP Analysis.}
+    \label{fig:customereventip}
+\end{figure}
+Fig. \ref{fig:customereventip} shows the attack event detected by telescopes and honeypots for our interested ip attack events $S$.
+
 
 The 'Customer event ip' condition extends the identification of relevant IP addresses by incorporating temporal alignment with specific events. It represents a subset of 'customer\_ip\_space', denoted as $E$, with the following additional condition:
 
@@ -27,21 +41,14 @@ The 'Customer event ip' condition extends the identification of relevant IP addr
     \includegraphics[scale=0.30]{graphs/matched_customer_graph.pdf}
     \caption{Mapping customer ip space and event.}
     \label{fig:mappedcustomergraph}
-    \end{figure}
-
-    \begin{figure}[htbp]
-        \centering
-        \includegraphics[scale=0.4]{graphs/space_no_event.pdf}
-        \caption{Customer IP Space Analysis.}
-        \label{fig:customeripspace}
-        \end{figure}
+\end{figure}
 
 \begin{figure*}[htbp]
     \centering
     \includegraphics[scale=0.48]{graphs/noir3.pdf}
     \caption{Custer IP Space and event Analysis.}
     \label{fig:Mappedaddressanalysis}
-    \end{figure*}
+\end{figure*}
 
 \section{Date Alignment}\label{sec:date_events_alignment}
 The data from the telescopes, which aligns with our DDOS events, is vividly represented by the spikes in True counts shown in the graph. 

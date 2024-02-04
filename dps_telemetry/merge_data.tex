@@ -97,7 +97,7 @@ Table \ref{table:spikes_data} presents the recorded spike events, indicating tha
 Please be noted that The data from the telescopes/Honeypots, which aligns with our DDOS events, is vividly represented by the spikes Customer IP Space in this context identifies IP addresses of our customers that are detected and logged within the telescopes/honeypot datasets. 
 The designation Customer Event IP, however, is more specifically applied to those customer IPs that not only appear in the telescopes/honeypot datasets but also coincide with the broader timeframes delineated by the \texttt{startTime} and \texttt{endTime} of our DDOS events. Crucially, this correlation is not based on exact hour, minute, and second details, since the telescopes/honeypot data does not include these precise time elements. Rather, matching is determined by the day, with the assumption that each recorded date encompasses the full 24-hour span from one midnight to the next.
 
-Fig \ref{fig:akamai_spikes} shows the distribution of attacks grouped by date and subnet detected by the telescopes/honeypots in the Customer IP Space.
+Fig \ref{fig:akamai_spikes} shows the distribution of attacks grouped by date and subnet detected by the telescopes/honeypots in the Customer IP Space sorted by the number of targeted Customer Event IP in ascending order (bin sizes).
 \begin{figure*}[htbp]
     \centering
     \includegraphics[scale=0.48]{graphs/bins.pdf}

@@ -9,72 +9,12 @@ BGP-based DPS excels in mitigating large-scale volumetric attacks. Utilizing the
 \section{DNS-based DPS: Benefits and Limitations}\label{sec:DDPS_benefits}
 DNS-based DDoS Protection Services (DPS) offer effective mitigation strategies by modifying the address record (A-record) in the target's DNS server \cite{schomp2020akamai}. The strategic adjustment of the Time-To-Live (TTL) values facilitates rapid updates and propagation of DNS records, which is essential in rerouting traffic efficiently during an attack. This method proves especially beneficial for web portals or applications dependent on DNS for reachability, offering a viable solution for small and medium-sized enterprises (SMEs) or organizations with smaller network infrastructures, as it does not necessitate a /24 network prefix. However, the effectiveness of DNS-based DPS is constrained when facing direct-to-IP attacks. Such attacks include services like FTP (File Transfer Protocol), SSH, SMTP (Simple Mail Transfer Protocol) for email, or other proprietary protocols often used in enterprise applications. Given that these services typically operate using fixed IP addresses rather than DNS lookups, DNS-based DPS may struggle to adequately mitigate attacks targeting them.
 
-
 \section{Operational Strategies: Detection and Mitigation}\label{sec:operations}
 BGP-Based DPS operational strategies are designed to address high-volume attacks targeting network bandwidth. These services utilize a comprehensive detection approach that encompasses Deep Packet Inspection (DPI), netflow analysis, and traffic graph examination \cite{wang2018delving} \cite{saied2016detection}. DPI, including critical payload inspection, is essential in accurately identifying Layer 3 and 4 attacks and is central to attack traffic fingerprinting, providing in-depth information crucial for the mitigation process. DPI's ability to delve into the specifics of packet content makes it an invaluable tool in distinguishing between attack and legitimate traffic. Complementing DPI, netflow and traffic graphs offer insights into traffic flow characteristics and aid in profiling normal legitimate user traffic. This helps in detecting anomalous patterns indicative of DDoS activities. Nonetheless, DPI strategies come with limitations, including their complexity, computational demands, and challenges in analyzing encrypted traffic.
-
-Table \ref{tab:ddos_attack_vectors} provides a list of 73 attack vectors identified by a DPS from 1 Jan 2019 – 31 Dec 2023
-
-
-\begin{table}[!htbp]
-\caption{DDoS Attack Vectors}
-\label{tab:ddos_attack_vectors}
-\centering
-\begin{tabular}{|>{\raggedright\arraybackslash}p{2.7cm}|>{\raggedright\arraybackslash}p{4.8cm}|}
-\hline
-\textbf{Category} & \textbf{Attack Vectors} \\
-\hline
-Reflection Attack & Memcached Reflection, DNS Reflection, NTP Reflection, SSDP Reflection, CLDAP Reflection, WSDiscovery Reflection, Censorship TCP Reflection, TFTP Reflection, mDNS Reflection, Netbios Reflection, ARMS Reflection, SNMP Reflection, RPC Reflection, SQL Server Reflection, RIP Reflection, SADP Reflection, SLP Reflection, Ubnt Reflection \\
-\hline
-Network Layer Attack & GRE Protocol Flood, ICMP Flood, IGMP Flood, IP Fragment \\
-\hline
-Transport Layer Attack (UDP) & UDP Flood, UDP Fragment \\
-\hline
-Transport Layer Attack (TCP) & TCP Anomaly, ACK Flood, SYN Flood, PSH ACK Flood, RESET Flood, SYN ACK Flood, Reserved Protocol Flood, TCP Fragment, Connection Flood, PUSH Flood, FIN Flood, XMAS, FIN PUSH Flood \\
-\hline
-Application Attack (UDP) & DNS Flood, NTP FLOOD, CharGEN Attack, SSDP Flood, DHdiscovery, STUN, SNMP Flood, Netbios Flood, mDNS Flood, TFTP Flood, ESP Flood, HEAD Flood, RIP Flood, coap, quake, voip10074 \\
-\hline
-Application Attack (TCP) & HTTP Flood, Apple Remote Desktop, Sentinel Flood, valvesrcds, VxWorks, afs, steamremoteplay, nat pmp, ikev1, plex, TLS Exhaustion, fivem, GET Flood, SSL GET Flood, POST Flood, SSL POST Flood \\
-\hline
-Others & SYN PUSH, WSDiscovery Flood \\
-\hline
-\end{tabular}
-\end{table}
-
 
 
 In contrast, DNS-Based DPS targets application-layer attacks and emphasizes analyzing content requests \cite{xie2008monitoring}. Unlike Layer 3 or 4 attacks where DPI provides significant benefits, application-layer attack detection in DNS-based DPS can rely on sufficient telemetry from traffic graphs and netflow analysis without necessitating DPI. This is particularly relevant when the network traffic is unrelated to the application layer, such as UDP packet floods or TCP packets on unrelated ports, which are not pertinent for a targeted web server's DPI analysis. DNS-based DPS instead places a greater emphasis on application logs from targeted systems. These logs are pivotal in identifying activities that exploit application vulnerabilities or functionalities, offering direct insights into how the application is being manipulated or overwhelmed by attack traffic. While DPI offers thorough traffic analysis, its effectiveness for DNS-based DPS is limited due to the complexities and demands of DPI, and its limited utility in encrypted traffic analysis.
 
-Table \ref{tab:application_attacks} provided a list of application based attack vectors (strategy) \cite{zolotukhin2018data} which are the primary focus of DNS-Based DPS.
-
-\begin{table}[!htbp]
-\centering
-\caption{Summary of Application Layer Attack Vectors}
-\begin{tabular}{|p{0.3\linewidth}|p{0.6\linewidth}|}
-\hline
-\textbf{Category} & \textbf{Attack Vectors} \\
-\hline
-Application Layer Attack (HTTP/HTTPS) & Slowloris, HTTP Flood, HTTPS Flood, HTTP/2 Flood, POST Flood, GET Flood, SSL Renegotiation Attack, SSL Exhaustion, HTTP Parameter Pollution, HTTP Bomb \\
-\hline
-Application Layer Attack (Web Applications) & Cross-Site Scripting (XSS), SQL Injection, Cross-Site Request Forgery (CSRF), Remote File Inclusion (RFI), Local File Inclusion (LFI), XML External Entity (XXE) Attack \\
-\hline
-Application Layer Attack (API) & API Endpoint Abuse, Excessive API Rate, GraphQL Injection, REST API Manipulation \\
-\hline
-Application Layer Attack (Authentication) & Credential Stuffing, Brute Force Attack, Dictionary Attack, Password Spraying \\
-\hline
-Application Layer Attack (CMS) & WordPress XML-RPC Flood, Joomla! SQL Injection, Drupalgeddon, Magento SQL Injection \\
-\hline
-Application Layer Attack (Frameworks) & Struts RCE Exploit, Ruby on Rails Code Injection, Node.js Route Enumeration \\
-\hline
-Application Layer Attack (Email Services) & Mail Bombing, Spamming, Phishing Attack, Email Spoofing \\
-\hline
-Application Layer Attack (DDoS Bots) & Mirai Botnet, Bashlite Botnet, Tor's Hammer, HOIC, LOIC \\
-\hline
-Miscellaneous Application Attacks & WebSocket Flood, Malicious Bot Scraping, Drive-By Download, Clickjacking \\
-\hline
-\end{tabular}
-\label{tab:application_attacks}
-\end{table}
 
 
 \section{The telemetry discrepancy among DPS in the industry}\label{sec:telemetry}
@@ -85,23 +25,3 @@ The telemetry discrepancy between BGP-Based and DNS-Based DDoS Protection Servic
 \section{Industry Trends: Offering Hybrid DPS Solutions}\label{sec:solutions}
 Some DPS providers in the industry are now offering both BGP-based and DNS-based services to provide a comprehensive DDoS mitigation portfolio. This hybrid approach allows for a more versatile defense strategy, catering to a broader range of attack vectors and offering tailored solutions based on the specific needs and infrastructure of the client.
 
-Table \ref{tab:ddos_protection_services} provides a summary the commonly available DDOS solutions in the industry
-
-\begin{table*}[t] % Use 't' to position at the top of the page
-\small % Adjust the font size as necessary
-\caption{Comparison of DDoS Protection Services}
-\label{tab:ddos_protection_services}
-\begin{tabularx}{\textwidth}{|X|X|X|X|X|}
-\hline
-\thead{Service Type} & \thead{General Description} & \thead{Services Protected\\ (Focus)} & \thead{Limitations} & \thead{Benefits} \\
-\hline
-BGP-based DPS & Offers DDoS protection for network service providers, hosting, and cloud service providers. Specifically designed to protect against a wide range of DDoS attacks by filtering malicious traffic in the cloud. & Network infrastructure, hosting services, and cloud platforms. & Reliant on BGP routing, which can be complex; limited to /24 prefixes or larger. & Effective for large-scale protection; can handle massive volumes of traffic; reduces the risk of network overload. \\
-\hline
-On-premises Solutions & Provides DDoS protection through physical or virtual systems installed on the client's premises. These systems can be from any vendor and are designed to integrate with the client's existing network infrastructure. & Internal networks, specific applications, and servers within the client's control. & Can be resource-intensive; may not handle large-scale attacks well; requires ongoing maintenance. & Direct control over the protection measures; immediate response to attacks; customizable to specific network needs. \\
-\hline
-DNS-based DPS & Protects your digital estate with a product combining a web application firewall, bot mitigation, API security, and Layer 7 DDoS protection. Utilizes DNS redirection to divert attack traffic for cleansing and protection. & Web applications, APIs, and digital platforms. & Dependent on DNS functionality; might not cover non-web-based services. & Comprehensive protection for web assets; scalable; effective against sophisticated attacks. \\
-\hline
-Hybrid Solution & Integrates cloud-based, on-premises DDoS protection, and/or DNS-based DPS. Leverages the strengths of various solutions for a comprehensive approach. & Combination of network infrastructure, internal networks, web applications, and cloud services. & Complexity in integrating different solutions; can be costlier. & Versatile and comprehensive protection; scalable; balances immediate on-site response with large-scale cloud capabilities. \\
-\hline
-\end{tabularx}
-\end{table*}

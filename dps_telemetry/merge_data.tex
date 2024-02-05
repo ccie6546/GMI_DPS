@@ -156,3 +156,19 @@ The information in Table \ref{table:spikes_data} correlates directly with the DD
 % In the initial phase of our methodology, we sift through the academic datasets to extract our customers' IP address spaces---this step helps in filtering out data unrelated to our platform or clientele, thereby defining our first subset of data, termed as ``customer IP space.''
 
 % Following this, we proceed to the second phase where we map the academic datasets' dates and victim IP addresses against our internal records' defined attack periods (\texttt{startTime} and \texttt{endTime}), alongside the IP addresses associated with our customers' DDOS attack events. This mapping process culminates in the creation of a refined dataset, designated as ``customer event IP,'' which enables a focused analysis of the correlation between academic findings and our own DDOS event records.
+
+
+\begin{table}[ht]
+    \centering
+    \begin{tabular}{|c|c|p{5cm}|c|c|}
+    \hline
+    \textbf{Row} & \textbf{Subnet} & \textbf{Attacks} & \textbf{Bits per Second} & \textbf{Packets per Second} \\ \hline
+    0 & A & CLDAP Reflection, DNS Reflection, NTP Reflection, SNMP Reflection, UDP Fragment & 69.86 Gbps & 8.12M \\ \hline
+    1 & B & SYN ACK Flood & 364.08 Mbps & 867.27k \\ \hline
+    2 & C & CLDAP Reflection, DNS Reflection, NTP Reflection, SNMP Reflection, SSDP Reflection, DHdiscovery, UDP Fragment & 101.85 Gbps & 20.68M \\ \hline
+    3 & D & DNS Reflection, NTP Reflection, SNMP Reflection, SYN Flood, UDP Flood, UDP Fragment & 29.44 Gbps & 8.41M \\ \hline
+    4 & D & ACK Flood, FIN PUSH Flood, PSH ACK Flood, RESET Flood, SYN Flood & 3.84 Gbps & 690.47k \\ \hline
+    \end{tabular}
+    \caption{Consolidated Data on Network Attacks and Traffic}
+    \label{table:network-attacks}
+    \end{table}

@@ -85,23 +85,32 @@ Fig. \ref{fig:Mappedaddressanalysis} summarises the analysis of Customer IP Spac
 \end{figure}
 
 
+\subsection{Special Attack Incidents Analysis}\label{sec:attackeventsfromcustomeripspace}
+The observed spike in Fig. \ref{fig:mappedcustomergraph} shows an abrupt jump in the number of victim (target) addresses on a particular date, which indicates that our customer prefix(es) in the Customer IP Space dataset may under horizontal attack. Normally, we observe the number of target addresses to be less than 50 daily, as indicated in Fig. \ref{fig:akamai_spikes}, which shows the distribution of the number of target addresses grouped by victim /24 prefix and date of attack. This observation is particularly interesting as mentioned in our company blogs \cite{Birchard2022DDoS}. We are seeing an increasing trend of horizontal attacks, referring to simultaneous DDoS attacks aimed at multiple, unrelated targets (which is why they’re sometimes called carpet bomb attacks). Instead of prioritizing a single high-value target, the attacker selects multiple targets in order to distribute the attack, making it more challenging for security teams to mitigate and maximizing the possibility of widespread disruption. 
 
+% Fig. visualizes the count of matched IP addresses over time, distinguishing between "Customer IP Space" and "Customer Event IP". It shows spikes indicating significant events: (A) a large number of targets detected from the Customer IP Space $S$ by telescopes/honeypots and (B) a large number of targets from Customer Events records by the DPS coincided with the telescopes/honeypots, address space $E$.
+% Amppot, Hopscotch, UCSD, and Orion
 
-
-\section{Attack Incidents Analysis}\label{sec:attackeventsfromcustomeripspace}
-Fig. \ref{fig:mappedcustomergraph} visualizes the count of matched IP addresses over time, distinguishing between "Customer IP Space" and "Customer Event IP". It shows spikes indicating significant events: (A) a large number of targets detected from the Customer IP Space $S$ by telescopes/honeypots and (B) a large number of targets from Customer Events records by the DPS coincided with the telescopes/honeypots, address space $E$.
-
-\subsection{Spikes Detected by Amppot, Hopscotch, UCSD, and Orion}
-Table \ref{table:spikes_data} presents the recorded spike events, indicating that some attack events can be detected by telescope setups, while others are detected by honeypot setups.
+\subsection{Spikes Detected by Academic datasets}
+Table \ref{table:spikes_data} outlines the detection of significant attack instances confirmed with our reported events, illustrating that some malicious activities are observable through network telescopes, while others are unveiled by honeypot infrastructures.
 \begin{itemize}
-    \item \textbf{Telescope Detection:} UCSD and Orion identify spoofed attacks targeting IP subnets, manifested as backscattered traffic. This phenomenon is observed in two specific scenarios:
-    \begin{enumerate}
-        \item When a customer transitions to DDoS Protection Services (DPS) for mitigation.
-        \item Before the DPS mitigation measures take effect.
-    \end{enumerate}
-    
-    \item \textbf{Honeypot Detection:} Amppot and Hopscotch detect direct and reflection attacks, actively engaging with all IP addresses within the targeted subnets. 
+\item \textbf{Network Telescopes:} Instruments like UCSD and Orion are crucial for identifying spoofed assault attempts on IP ranges, evidenced by anomalous backscatter signals. These incidents predominantly occur in two situations:
+\begin{enumerate}
+\item When an entity engages DDoS Protection Services for imminent threat mitigation.
+\item During the initial phase before the full implementation of mitigation strategies.
+\end{enumerate}
+\item \textbf{Honeypots:} Tools such as Amppot and Hopscotch are effective in detecting both straightforward and complex attacks, maintaining vigilance over entire targeted IP segments. 
 \end{itemize}
+
+Telescope detections often involve straightforward attack mechanisms like UDP, SYN, and NTP floods, as well as TCP irregularities, leveraging the telescope's IP space as spoofed origins.
+
+In contrast, honeypots reveal the intricacies of amplification and reflection attacks, such as those involving DNS and NTP, demonstrating their capability to expose and analyze these more complex attack vectors.
+
+
+
+
+
+
 
 
 \begin{table*}[htbp]
@@ -123,14 +132,13 @@ Table \ref{table:spikes_data} presents the recorded spike events, indicating tha
     \end{table*}
 
 
-Please be noted that The data from the telescopes/Honeypots, which aligns with our DDOS events, is vividly represented by the spikes Customer IP Space in this context identifies IP addresses of our customers that are detected and logged within the telescopes/honeypot datasets. 
-The designation Customer Event IP, however, is more specifically applied to those customer IPs that not only appear in the telescopes/honeypot datasets but also coincide with the broader timeframes delineated by the \texttt{startTime} and \texttt{endTime} of our DDOS events. Crucially, this correlation is not based on exact hour, minute, and second details, since the telescopes/honeypot data does not include these precise time elements. Rather, matching is determined by the day, with the assumption that each recorded date encompasses the full 24-hour span from one midnight to the next.
+The information in Table \ref{table:spikes_data} correlates directly with the DDoS events we've monitored, specifically through the sudden increases observed within our Customer Event IP dataset. This dataset pinpoints IP addresses within our customers' network prefixes that have been flagged by either the telescope or honeypot monitoring systems. The term "Customer Event IP" is particularly attributed to those IP addresses that are not only detected in the monitoring datasets but also align with the wider time windows marked by the \texttt{startTime} and \texttt{endTime} of observed DDoS incidents. It's important to note that this alignment does not rely on the precise timing (hour, minute, and second) due to the monitoring data's lack of such detailed timestamps. Instead, the matching process is based on the assumption that each date recorded represents the entire 24-hour period from midnight to midnight, ensuring that the correlation considers the full day's potential for attack activity.
 
-Fig \ref{fig:akamai_spikes} shows the distribution of attacks grouped by date and subnet detected by the telescopes/honeypots in the Customer IP Space sorted by the number of targeted Customer Event IP in ascending order (bin sizes).
+
 \begin{figure*}[htbp]
     \centering
-    \includegraphics[scale=0.48]{graphs/bins.pdf}
-    \caption{Customer IP Space and event Analysis.}
+    \includegraphics[scale=0.48]{graphs/space_bin_log.pdf}
+    \caption{Distribution of Number of victim ip grouped by date and /24 prefixes.}
     \label{fig:akamai_spikes}
 \end{figure*}
 
